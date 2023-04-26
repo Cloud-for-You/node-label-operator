@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- node-labels_v1_label.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

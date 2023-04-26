@@ -1,0 +1,12 @@
+apiVersion: node-labels.cfy.cz/v1
+kind: Label
+metadata:
+  labels:
+    app.kubernetes.io/name: label
+    app.kubernetes.io/instance: label-sample
+    app.kubernetes.io/part-of: node-label-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: node-label-operator
+  name: label-sample
+spec:
+  # TODO(user): Add fields here
