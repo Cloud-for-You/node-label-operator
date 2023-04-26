@@ -1,4 +1,4 @@
-module github.com/hates52/nodel-label-operator
+module github.com/hates52/node-label-operator
 
 go 1.19
 

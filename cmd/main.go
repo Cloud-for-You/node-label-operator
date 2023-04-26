@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	nodelabelsv1 "github.com/hates52/nodel-label-operator/api/v1"
-	"github.com/hates52/nodel-label-operator/internal/controller"
+	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
+	"github.com/hates52/node-label-operator/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
 

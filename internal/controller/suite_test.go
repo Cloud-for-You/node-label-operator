@@ -30,7 +30,7 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	nodelabelsv1 "github.com/hates52/nodel-label-operator/api/v1"
+	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
 	//+kubebuilder:scaffold:imports
 )
 
