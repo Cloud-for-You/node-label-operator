@@ -23,42 +23,44 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// LabelSpec defines the desired state of Label
-type LabelSpec struct {
+// LabelsSpec defines the desired state of Labels
+type LabelsSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Label. Edit label_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Foo is an example field of Labels. Edit labels_types.go to remove/update
+	NodeNamePatterns []string          `json:"nodeNamePatterns"`
+	Labels           map[string]string `json:"labels"`
 }
 
-// LabelStatus defines the observed state of Label
-type LabelStatus struct {
+// LabelsStatus defines the observed state of Labels
+type LabelsStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
+//+kubebuilder:resource:scope=Cluster
 
-// Label is the Schema for the labels API
-type Label struct {
+// Labels is the Schema for the labels API
+type Labels struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   LabelSpec   `json:"spec,omitempty"`
-	Status LabelStatus `json:"status,omitempty"`
+	Spec   LabelsSpec   `json:"spec,omitempty"`
+	Status LabelsStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// LabelList contains a list of Label
-type LabelList struct {
+// LabelsList contains a list of Labels
+type LabelsList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Label `json:"items"`
+	Items           []Labels `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&Label{}, &LabelList{})
+	SchemeBuilder.Register(&Labels{}, &LabelsList{})
 }

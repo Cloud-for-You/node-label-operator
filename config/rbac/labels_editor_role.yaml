@@ -4,12 +4,12 @@ kind: ClusterRole
 metadata:
   labels:
     app.kubernetes.io/name: clusterrole
-    app.kubernetes.io/instance: label-editor-role
+    app.kubernetes.io/instance: labels-editor-role
     app.kubernetes.io/component: rbac
     app.kubernetes.io/created-by: node-label-operator
     app.kubernetes.io/part-of: node-label-operator
     app.kubernetes.io/managed-by: kustomize
-  name: label-editor-role
+  name: labels-editor-role
 rules:
 - apiGroups:
   - node-labels.cfy.cz

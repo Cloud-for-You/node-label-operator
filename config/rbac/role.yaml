@@ -1,0 +1,33 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - node-labels.cfy.cz
+  resources:
+  - labels
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - node-labels.cfy.cz
+  resources:
+  - labels/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - node-labels.cfy.cz
+  resources:
+  - labels/status
+  verbs:
+  - get
+  - patch
+  - update

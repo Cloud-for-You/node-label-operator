@@ -4,12 +4,12 @@ kind: ClusterRole
 metadata:
   labels:
     app.kubernetes.io/name: clusterrole
-    app.kubernetes.io/instance: label-viewer-role
+    app.kubernetes.io/instance: labels-viewer-role
     app.kubernetes.io/component: rbac
     app.kubernetes.io/created-by: node-label-operator
     app.kubernetes.io/part-of: node-label-operator
     app.kubernetes.io/managed-by: kustomize
-  name: label-viewer-role
+  name: labels-viewer-role
 rules:
 - apiGroups:
   - node-labels.cfy.cz

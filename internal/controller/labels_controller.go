@@ -27,8 +27,8 @@ import (
 	nodelabelsv1 "github.com/hates52/nodel-label-operator/api/v1"
 )
 
-// LabelReconciler reconciles a Label object
-type LabelReconciler struct {
+// LabelsReconciler reconciles a Labels object
+type LabelsReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
 }
@@ -40,13 +40,13 @@ type LabelReconciler struct {
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
-// the Label object against the actual cluster state, and then
+// the Labels object against the actual cluster state, and then
 // perform operations to make the cluster state reflect the state specified by
 // the user.
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.14.1/pkg/reconcile
-func (r *LabelReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
 	// TODO(user): your logic here
@@ -55,8 +55,8 @@ func (r *LabelReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 }
 
 // SetupWithManager sets up the controller with the Manager.
-func (r *LabelReconciler) SetupWithManager(mgr ctrl.Manager) error {
+func (r *LabelsReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&nodelabelsv1.Label{}).
+		For(&nodelabelsv1.Labels{}).
 		Complete(r)
 }

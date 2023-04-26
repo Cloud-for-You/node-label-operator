@@ -13,11 +13,10 @@ repo: github.com/hates52/nodel-label-operator
 resources:
 - api:
     crdVersion: v1
-    namespaced: true
   controller: true
   domain: cfy.cz
   group: node-labels
-  kind: Label
+  kind: Labels
   path: github.com/hates52/nodel-label-operator/api/v1
   version: v1
 version: "3"
