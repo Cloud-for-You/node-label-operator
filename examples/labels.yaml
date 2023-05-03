@@ -2,13 +2,23 @@
 apiVersion: node-labels.cfy.cz/v1
 kind: Labels
 metadata:
+  name: zone-default
+spec:
+  labels:
+    topology.kubernetes.io/zone: default
+  nodeNamePatterns:
+  - microk8s-vm
+
+---
+apiVersion: node-labels.cfy.cz/v1
+kind: Labels
+metadata:
   name: zone-dc1
 spec:
   labels:
     topology.kubernetes.io/zone: dc1
   nodeNamePatterns:
   - worker-00-50-56-ac-.*
-  - worker-00-50-56-93-new
 
 ---
 apiVersion: node-labels.cfy.cz/v1
