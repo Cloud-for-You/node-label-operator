@@ -18,6 +18,7 @@ package controller
 
 import (
 	"context"
+	"time"
 
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -141,7 +142,7 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		}
 	}
 
-	return ctrl.Result{}, nil
+	return ctrl.Result{RequeueAfter: time.Minute * 5}, nil
 }
 
 func (r *LabelsReconciler) finalizeLabels(m *nodelabelsv1.Labels) error {
