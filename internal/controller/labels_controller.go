@@ -142,7 +142,7 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		}
 	}
 
-	return ctrl.Result{RequeueAfter: time.Minute * 5}, nil
+	return ctrl.Result{RequeueAfter: time.Minute * 2}, nil
 }
 
 func (r *LabelsReconciler) finalizeLabels(m *nodelabelsv1.Labels) error {
