@@ -17,7 +17,7 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=quay.io/${GITHUB_REPOSITORY}
+          DOCKER_IMAGE=quay.io/$(echo ${GITHUB_REPOSITORY})
           VERSION=noop
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
