@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: node-label-operator
+  description: Kubernetes operator for automatic labeling node over regexp
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: node-label-operator
+    backstage.io/kubernetes-namespace: node-label-operator
+    github.com/project-slug: cloud-for-you/node-label-operator
+    quay.io/repository-slug: cloud-for-you/node-label-operator
+    pagerduty.com/integration-key: R03E3RF0B2OXYNK7Z0EMBKAXT7N1TFQR
+  tags:
+    - golang
+    - kubernetes-operator
+spec:
+  type: service
+  owner: "user:default/hates52"
+  system: kubernetes
+  lifecycle: production
