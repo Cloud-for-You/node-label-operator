@@ -1,6 +1,8 @@
-name: Build
+name: Release and build application
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build-image-container:
