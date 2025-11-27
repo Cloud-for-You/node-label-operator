@@ -101,14 +101,14 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 
 	// ziskame vsechny labely, ktere budeme nastavovat
 	allLabels := &nodelabelsv1.LabelsList{}
-	if err = r.Client.List(context.TODO(), allLabels, &client.ListOptions{}); err != nil {
+	if err = r.List(context.TODO(), allLabels, &client.ListOptions{}); err != nil {
 		log.Error(err, "Failed to list Labels")
 		return ctrl.Result{}, err
 	}
 
 	// ziskame seznam vsech nodu
 	nodes := &v1.NodeList{}
-	if err = r.Client.List(context.TODO(), nodes, &client.ListOptions{}); err != nil {
+	if err = r.List(context.TODO(), nodes, &client.ListOptions{}); err != nil {
 		log.Error(err, "Failed to list Nodes")
 		return ctrl.Result{}, err
 	}
@@ -124,7 +124,7 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		if nodeModified {
 			log.Info("patching node")
 			baseToPatch := client.MergeFrom(&nodeOrig)
-			if err := r.Client.Patch(context.TODO(), node, baseToPatch); err != nil {
+			if err := r.Patch(context.TODO(), node, baseToPatch); err != nil {
 				log.Error(err, "Failed to patch Node")
 				return ctrl.Result{}, err
 			}
@@ -147,7 +147,7 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 }
 
 func (r *LabelsReconciler) finalizeLabels(m *nodelabelsv1.Labels) error {
-	log.Log.Info("Successfuly finalize labels")
+	log.Log.Info("Successfully finalize labels")
 	return nil
 }
 
