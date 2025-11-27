@@ -45,6 +45,7 @@ type LabelsReconciler struct {
 }
 
 //+kubebuilder:rbac:groups=node-labels.cfy.cz,resources=labels,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=nodes,verbs=get;list;watch
 //+kubebuilder:rbac:groups=node-labels.cfy.cz,resources=labels/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=node-labels.cfy.cz,resources=labels/finalizers,verbs=update
 
