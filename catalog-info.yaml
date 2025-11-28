@@ -15,6 +15,6 @@ metadata:
     - kubernetes-operator
 spec:
   type: service
-  owner: "user:default/hates52"
+  owner: "user:default/cloud-for-you"
   system: kubernetes
   lifecycle: production

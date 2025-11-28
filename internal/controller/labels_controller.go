@@ -28,9 +28,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
+	nodelabelsv1 "github.com/cloud-for-you/node-label-operator/api/v1"
+	"github.com/cloud-for-you/node-label-operator/pkg"
 	"github.com/go-logr/logr"
-	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
-	"github.com/hates52/node-label-operator/pkg"
 )
 
 const (
@@ -45,6 +45,7 @@ type LabelsReconciler struct {
 }
 
 //+kubebuilder:rbac:groups=node-labels.cfy.cz,resources=labels,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=nodes,verbs=get;list;watch
 //+kubebuilder:rbac:groups=node-labels.cfy.cz,resources=labels/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=node-labels.cfy.cz,resources=labels/finalizers,verbs=update
 
@@ -100,14 +101,14 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 
 	// ziskame vsechny labely, ktere budeme nastavovat
 	allLabels := &nodelabelsv1.LabelsList{}
-	if err = r.Client.List(context.TODO(), allLabels, &client.ListOptions{}); err != nil {
+	if err = r.List(context.TODO(), allLabels, &client.ListOptions{}); err != nil {
 		log.Error(err, "Failed to list Labels")
 		return ctrl.Result{}, err
 	}
 
 	// ziskame seznam vsech nodu
 	nodes := &v1.NodeList{}
-	if err = r.Client.List(context.TODO(), nodes, &client.ListOptions{}); err != nil {
+	if err = r.List(context.TODO(), nodes, &client.ListOptions{}); err != nil {
 		log.Error(err, "Failed to list Nodes")
 		return ctrl.Result{}, err
 	}
@@ -123,7 +124,7 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		if nodeModified {
 			log.Info("patching node")
 			baseToPatch := client.MergeFrom(&nodeOrig)
-			if err := r.Client.Patch(context.TODO(), node, baseToPatch); err != nil {
+			if err := r.Patch(context.TODO(), node, baseToPatch); err != nil {
 				log.Error(err, "Failed to patch Node")
 				return ctrl.Result{}, err
 			}
@@ -146,7 +147,7 @@ func (r *LabelsReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 }
 
 func (r *LabelsReconciler) finalizeLabels(m *nodelabelsv1.Labels) error {
-	log.Log.Info("Successfuly finalize labels")
+	log.Log.Info("Successfully finalize labels")
 	return nil
 }
 

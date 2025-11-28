@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
-	"github.com/hates52/node-label-operator/internal/controller"
+	nodelabelsv1 "github.com/cloud-for-you/node-label-operator/api/v1"
+	"github.com/cloud-for-you/node-label-operator/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -67,8 +67,6 @@ func main() {
 
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 		Scheme:                 scheme,
-		MetricsBindAddress:     metricsAddr,
-		Port:                   9443,
 		HealthProbeBindAddress: probeAddr,
 		LeaderElection:         enableLeaderElection,
 		LeaderElectionID:       "3bcac727.cfy.cz",

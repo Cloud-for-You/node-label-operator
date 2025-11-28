@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-logr/logr"
 
-	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
+	nodelabelsv1 "github.com/cloud-for-you/node-label-operator/api/v1"
 	v1 "k8s.io/api/core/v1"
 )
 
@@ -15,7 +15,13 @@ func AddLabels(node *v1.Node, labels nodelabelsv1.Labels, log logr.Logger) bool 
 		return false
 	}
 
-	log.Info("Checking if labels need to be added to node", "node", node.Name, "label config", fmt.Sprintf("%+v", labels.Spec))
+	log.Info(
+		"Checking if labels need to be added to node",
+		"node",
+		node.Name,
+		"label config",
+		fmt.Sprintf("%+v", labels.Spec),
+	)
 	nodeModified := false
 
 	for _, nodeNamePattern := range labels.Spec.NodeNamePatterns {
@@ -35,7 +41,17 @@ func AddLabels(node *v1.Node, labels nodelabelsv1.Labels, log logr.Logger) bool 
 		}
 		for name, value := range labels.Spec.Labels {
 			if val, ok := node.Labels[name]; !ok || val != value {
-				log.Info("Adding label to node based on pattern", "node", node.Name, "pattern", nodeNamePattern, "labelName", name, "labelValue", value)
+				log.Info(
+					"Adding label to node based on pattern",
+					"node",
+					node.Name,
+					"pattern",
+					nodeNamePattern,
+					"labelName",
+					name,
+					"labelValue",
+					value,
+				)
 				node.Labels[name] = value
 				nodeModified = true
 			}
