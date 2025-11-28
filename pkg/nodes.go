@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-logr/logr"
 
-	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
+	nodelabelsv1 "github.com/cloud-for-you/node-label-operator/api/v1"
 	v1 "k8s.io/api/core/v1"
 )
 

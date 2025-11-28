@@ -1,4 +1,4 @@
-module github.com/hates52/node-label-operator
+module github.com/cloud-for-you/node-label-operator
 
 go 1.24.6
 

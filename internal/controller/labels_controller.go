@@ -28,9 +28,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
+	nodelabelsv1 "github.com/cloud-for-you/node-label-operator/api/v1"
+	"github.com/cloud-for-you/node-label-operator/pkg"
 	"github.com/go-logr/logr"
-	nodelabelsv1 "github.com/hates52/node-label-operator/api/v1"
-	"github.com/hates52/node-label-operator/pkg"
 )
 
 const (
